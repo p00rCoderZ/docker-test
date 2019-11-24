@@ -6,7 +6,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=pros'
+      - 'POSTGRES_PASSWORD=foobar'
+      - 'POSTGRES_DB=kup'
   api:
     build: .
     container_name: api
@@ -23,8 +25,8 @@ services:
       - postgres
     environment:
       - 'PGHOST=postgres'
-      - 'PGDATABASE=postgres'
-      - 'PGUSER=postgres'
-      - 'PGPASSWORD=postgres'
+      - 'PGDATABASE=kup'
+      - 'PGUSER=pros'
+      - 'PGPASSWORD=foobar'
     
   
