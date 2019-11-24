@@ -1,5 +1,9 @@
-FROM ubuntu
+FROM python:3
+
+WORKDIR /usr/api/src
+
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
 RUN apt-get update
-RUN apt-get install -y python3 python3-pip vim nano
-RUN python3 -m pip install sanic
+RUN apt-get install -y vim nano tmux

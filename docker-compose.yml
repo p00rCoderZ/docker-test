@@ -1,0 +1,19 @@
+version: '3.2'
+services:
+  postgres:
+    container_name: postgres
+    image: postgres
+  api:
+    build: .
+    container_name: api
+    ports:
+      - "8080:8000"
+    volumes:
+      - ./src:/usr/api/src
+    depends_on:
+      - postgres
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash
+    
+  
