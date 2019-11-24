@@ -3,6 +3,10 @@ services:
   postgres:
     container_name: postgres
     image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - 'POSTGRES_PASSWORD=postgres'
   api:
     build: .
     container_name: api
@@ -15,5 +19,12 @@ services:
     tty: true
     stdin_open: true
     entrypoint: /bin/bash
+    links:
+      - postgres
+    environment:
+      - 'PGHOST=postgres'
+      - 'PGDATABASE=postgres'
+      - 'PGUSER=postgres'
+      - 'PGPASSWORD=postgres'
     
   
